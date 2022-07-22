@@ -17,9 +17,14 @@ namespace ItemRecoveryPlus
             if(questionAndAnswer is not "adventureGuild_RecoveryPlus")
                 return;
 
-            Game1.activeClickableMenu = new ShopMenu(Game1.player.itemsLostLastDeath.Cast<ISalable>().ToList(), who: "Marlon_Recovery");
+            Game1.drawDialogue(Game1.getCharacterFromName("Marlon"), "You want me to recover your items? I can do that but you'll only have this one chance to pay the fee.");
 
-            Game1.player.itemsLostLastDeath.Clear();
+            Game1.afterDialogues += () =>
+            {
+                Game1.activeClickableMenu = new ShopMenu(Game1.player.itemsLostLastDeath.Cast<ISalable>().ToList());
+
+                Game1.player.itemsLostLastDeath.Clear();
+            };
 
             __result = true;
         }
