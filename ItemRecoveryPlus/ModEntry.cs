@@ -13,6 +13,8 @@ namespace ItemRecoveryPlus
         /// <inheritdoc />
         public override void Entry(IModHelper helper)
         {
+            I18n.Init(helper.Translation);
+
             helper.Events.Display.MenuChanged += AddDialogueOption;
 
             //Patches the game with the new dialogue action
