@@ -5,6 +5,9 @@ using StardewValley.Menus;
 
 namespace ItemRecoveryPlus
 {
+    /// <summary>
+    /// This patch is meant to replace the in-game method to answer a dialogue question in order to add our own options.
+    /// </summary>
     [HarmonyPatch]
     internal static class DialoguePatch
     {
