@@ -21,9 +21,12 @@ namespace ItemRecoveryPlus
 
             Game1.afterDialogues += () =>
             {
-                Game1.activeClickableMenu = new ShopMenu(Game1.player.itemsLostLastDeath.Cast<ISalable>().ToList());
+                Game1.activeClickableMenu = new ConfirmationDialog("Are you okay with that?", player =>
+                {
+                    Game1.activeClickableMenu = new ShopMenu(player.itemsLostLastDeath.Cast<ISalable>().ToList());
 
-                Game1.player.itemsLostLastDeath.Clear();
+                    player.itemsLostLastDeath.Clear();
+                });
             };
 
             __result = true;
